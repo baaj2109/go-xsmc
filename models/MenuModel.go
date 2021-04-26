@@ -53,7 +53,7 @@ func MenuList() ([]*MenuModel, int64) {
 }
 
 func ParentMenuList() []*MenuModel {
-	query := orm.NewOrm().QueryTable("menu").Filter("parent", 0)
+	query := orm.NewOrm().QueryTable("xcms_menu").Filter("parent", 0)
 	data := make([]*MenuModel, 0)
 	query.OrderBy("-seq").Limit(1000).All(&data)
 	return data

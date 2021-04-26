@@ -25,9 +25,13 @@ func UserStruct() []*UserModel {
 
 func UserList(pageSize, page int) ([]*UserModel, int64) {
 	query := orm.NewOrm().QueryTable("xcms_user")
-	data := make([]*MenuModel, 0)
-	query.OrderBy("parent", "-seq").All(&data)
-	return nil, 8
+	total, _ := query.Count()
+
+	offset := (page - 1) * pageSize
+	data := make([]*UserModel, 0)
+	query.OrderBy("-user_id").Limit(pageSize, offset).All(&data)
+
+	return data, total
 }
 
 func GetUserByName(userkey string) UserModel {
