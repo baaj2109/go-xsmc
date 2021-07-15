@@ -7,7 +7,9 @@ import (
 )
 
 func init() {
-	beego.Router("/", &controllers.MainController{})
+	// beego.Router("/", &controllers.MainController{})
+	beego.Router("/", &controllers.HomeController{}, "Get:Index")
+	//menu
 	beego.Router("/menu", &controllers.MenuController{}, "Get:Index")
 	beego.Router("/menu/list", &controllers.MenuController{}, "*:List")
 	beego.Router("/menu/edit", &controllers.MenuController{}, "*:Edit")
@@ -24,4 +26,10 @@ func init() {
 	beego.Router("/user/editdo", &controllers.UserController{}, "*:EditDo")
 	beego.Router("/user/deletedo", &controllers.UserController{}, "Get:DeleteDo")
 
+	//login
+	beego.Router("/login", &controllers.LoginController{}, "*:Index")
+
+	//format
+	beego.Router("/format/edit", &controllers.FormatController{}, "Get:Edit")
+	beego.Router("/format/editdo", &controllers.FormatController{}, "*:EditDo")
 }

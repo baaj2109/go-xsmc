@@ -11,20 +11,33 @@ type UserModel struct {
 	IsAdmin  int8   `orm:"default(0)"`
 }
 
+/*
+CREATE TABLE user (
+	UserId INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	UserKey VARCHAR(64) NOT NULL UNIQUE,
+	UserName VARCHAR(64) ,
+	AuthStr VARCHAR(512),
+	PassWord VARCHAR(128),
+	IsAdmin INT(8)
+	);
+
+INSERT INTO user (username, authstr, password) VALUES('123','123','123');
+
+*/
+
 func (m *UserModel) TableName() string {
-	return "xcms_user"
+	return "user"
 }
 
 func UserStruct() []*UserModel {
-	query := orm.NewOrm().QueryTable("xcms_user")
+	query := orm.NewOrm().QueryTable("user")
 	data := make([]*UserModel, 0)
 	query.OrderBy("-user_id").All(&data)
 	return data
-
 }
 
 func UserList(pageSize, page int) ([]*UserModel, int64) {
-	query := orm.NewOrm().QueryTable("xcms_user")
+	query := orm.NewOrm().QueryTable("user")
 	total, _ := query.Count()
 
 	offset := (page - 1) * pageSize

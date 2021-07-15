@@ -16,10 +16,15 @@ type BaseController struct {
 }
 
 func (c *BaseController) Prepare() {
+	//赋值
 	c.controllerName, c.actionName = c.GetControllerAndAction()
 	beego.Informational(c.controllerName, c.actionName)
-	fmt.Println("beego:prepare:" + c.controllerName + "," + c.actionName)
-	c.Data["Menu"] = models.MenuStruct()
+	//TODO 保存用户数据
+	fmt.Println("beego:perpare" + c.controllerName + "," + c.actionName)
+	user := c.auth()
+	c.Data["Menu"] = models.MenuTreeStruct(user)
+	// c.Data["Menu"] = models.MenuStruct()
+	c.Data["User"] = models.UserStruct()
 }
 
 //设置模板
@@ -57,4 +62,15 @@ func (c *BaseController) listJsonResult(code consts.JsonResultCode, msg string, 
 	c.Data["json"] = r
 	c.ServeJSON()
 	c.StopRun()
+}
+
+func (c *BaseController) auth() models.UserModel {
+	user := c.GetSession("user")
+	if user == nil {
+		c.Redirect("/login", 302)
+		c.StopRun()
+		return models.UserModel{}
+	} else {
+		return user.(models.UserModel)
+	}
 }

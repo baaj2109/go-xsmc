@@ -1,5 +1,5 @@
-// package utils
+package utils
 
-// import cache "github.com/patrickmn/go-cache"
+import cache "github.com/patrickmn/go-cache"
 
-// var Cache *cache.Cache
+var Cache *cache.Cache
