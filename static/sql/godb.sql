@@ -1,12 +1,13 @@
 /*
 Navicat MySQL Data Transfer
-Source Server         : local
+Source Server         : 本地
 Source Server Version : 50726
 Source Host           : localhost:3306
-Source Database       : xcms
+Source Database       : godb
 Target Server Type    : MYSQL
 Target Server Version : 50726
 File Encoding         : 65001
+Date: 2020-07-05 11:44:34
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -65,8 +66,8 @@ INSERT INTO `menu` VALUES ('9', '7', '学生信息', '0', '{\"schema\":{\"userna
 DROP TABLE IF EXISTS `page`;
 CREATE TABLE `page` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `email` varchar(64) NOT NULL DEFAULT '' COMMENT '信箱',
-  `website` varchar(64) NOT NULL DEFAULT '' COMMENT '網站',
+  `email` varchar(64) NOT NULL DEFAULT '' COMMENT '邮箱',
+  `website` varchar(64) NOT NULL DEFAULT '' COMMENT '网站',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
@@ -93,5 +94,6 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', '123', 'baaj', '[1,5,7]', '123', '1');
-INSERT INTO `user` VALUES ('2', 'aa', 'bb', '[1]', 'aa', '1');
+INSERT INTO `user` VALUES ('1', 'aa', '雷小天', '[1,5,7]', '123456', '1');
+INSERT INTO `user` VALUES ('9', 'bb', 'bb', '[1]', 'bb', '1');
+INSERT INTO `user` VALUES ('7', 'gg', '测试', '[1,5]', '123456', '0');

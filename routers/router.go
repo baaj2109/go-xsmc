@@ -9,6 +9,7 @@ import (
 func init() {
 	// beego.Router("/", &controllers.MainController{})
 	beego.Router("/", &controllers.HomeController{}, "Get:Index")
+
 	//menu
 	beego.Router("/menu", &controllers.MenuController{}, "Get:Index")
 	beego.Router("/menu/list", &controllers.MenuController{}, "*:List")
@@ -32,4 +33,8 @@ func init() {
 	//format
 	beego.Router("/format/edit", &controllers.FormatController{}, "Get:Edit")
 	beego.Router("/format/editdo", &controllers.FormatController{}, "*:EditDo")
+
+	// data
+	beego.Router("/data/?:mid", &controllers.DataController{}, "Get:Index")
+	beego.Router("/data/list/?:mid", &controllers.DataController{}, "*:List")
 }
