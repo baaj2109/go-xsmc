@@ -16,15 +16,34 @@ func main() {
 
 /*
 
-net start mysql80
+## open database
+	net start mysql80
 
-# 新增資料庫
-CREATE DATABASE `xcms`;
+## install beego bee
+	go get github.com/astaxie/beego
+	go get github.com/astaxie/bee
+
+## create web application
+	bee new <project name>
+
+## create api application
+	bee apii <api name>
+
+## run server
+	bee run
 
 
-run server
 
-bee run
+*/
+/*
+獨立部屬
+
+set GOOS = [ darwin(for mac) / linus/ windows]
+set GOARCH = [ arm64 / amd64 ]
+// go build >> xcms
+bee pack >> xcms.tar.gz
+
+nginx 雙機部屬 >> for load balance
 
 
 */

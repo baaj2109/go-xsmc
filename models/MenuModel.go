@@ -101,9 +101,9 @@ func ParentMenuList() []*MenuModel {
 func MenuFormatStruct(mid int) *simplejson.Json {
 	menu := MenuModel{Mid: mid}
 	err := orm.NewOrm().Read(&menu)
-	if nil == err {
-		jsonstruct, err2 := simplejson.NewJson([]byte(menu.Format))
-		if nil == err2 {
+	if err == nil {
+		jsonstruct, jsonError := simplejson.NewJson([]byte(menu.Format))
+		if jsonError == nil {
 			return jsonstruct
 		}
 	}

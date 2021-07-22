@@ -25,6 +25,7 @@ func (c *BaseController) Prepare() {
 	c.Data["Menu"] = models.MenuTreeStruct(user)
 	// c.Data["Menu"] = models.MenuStruct()
 	c.Data["User"] = models.UserStruct()
+
 }
 
 //设置模板
